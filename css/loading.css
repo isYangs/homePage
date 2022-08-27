@@ -1,0 +1,85 @@
+.loading {
+  width: 100%;
+  min-height: 900px;
+  height: 100%;
+  background: #57606f;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading .loading-animation {
+  width: 200px;
+  height: 130px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.loading .loading-animation .loading-animation-slide {
+  width: 170px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.loading .loading-animation .loading-animation-slide div {
+  width: 30px;
+  height: 30px;
+  transform: translate(0px, 0px);
+  border-radius: 50%;
+  animation: slide 1s infinite;
+}
+.loading .loading-animation .loading-animation-slide div:nth-child(1) {
+  background: #52b69a;
+  animation-delay: 0.2s;
+}
+.loading .loading-animation .loading-animation-slide div:nth-child(2) {
+  background: #34a0a4;
+  animation-delay: 0.6s;
+}
+.loading .loading-animation .loading-animation-slide div:nth-child(3) {
+  background: #168aad;
+  animation-delay: 1s;
+}
+.loading .loading-animation .loading-animation-slide div:nth-child(4) {
+  background: #1a759f;
+  animation-delay: 1.4s;
+}
+.loading .loading-animation .loading-animation-slide div:nth-child(5) {
+  background: #1e6091;
+  animation-delay: 1.8s;
+}
+.loading .loading-animation span {
+  width: 100%;
+  text-align: center;
+  justify-self: center;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+.loading .loading-animation span:last-child {
+  font-size: 0.8rem;
+}
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}

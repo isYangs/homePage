@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="./img/logo.jpg" rel="icon" type="image/x-icon" />
+        <title>homePage-isYangs</title>
+        <meta content="若不是你的及时发现，网站可能已经寄了！" name="description" />
+        <meta content="isYangs,个人主页" name="keywords" />
+        <link href="./css/style.css" rel="stylesheet" />
+        <link href="./css/media.css" rel="stylesheet" />
+        <link href="./webfont/iconfont.css" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" rel="stylesheet"  />
+        <script src="./js/axios.js"></script>
+        <script src="./js/set.js"></script>
+    </head>
+    <body>
+        <section class="section">
+            <!-- 加载动画 -->
+            <!-- <div class="loading">
+                <div class="loading-animation">
+                    <div class="loading-animation-slide">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span id="loading-title">isYangs&nbsp;的个人主页</span>
+                    <span id="loading-text">加载中</span>
+                </div>
+            </div> -->
+            <!-- 背景图片 -->
+            <div class="bg-all">
+                <img alt="背景图片" id="bg-img" src="./img/background2.webp"/>
+                <div class="cover"></div>
+            </div>
+            <!-- 主体内容 -->
+            <main class="main">
+                <div class="main-content">
+                    <div class="main-content-row">
+                        <div class="main-content-left">
+                            <!-- Logo -->
+                            <div class="page-logo">
+                                <div class="logo">
+                                    <img alt="页面logo"  src="./img/logo.jpg"/>
+                                </div>
+                                <!-- 页面标题 -->
+                                <div class="title">
+                                    <span>isYangs</span>
+                                    <span>.cn</span>
+                                </div>
+                            </div>
+                            <!-- 网站介绍 -->
+                            <div class="message-card">
+                                <i class="iconfont i-bxs-quote-left"></i>
+                                <div class="message-text">
+                                    <span>Hello World!</span>
+                                    <span>一个不知名的小网站，若不是你及时发现，已经寄了！</span>
+                                </div>
+                                <i class="iconfont i-bxs-quote-right"></i>
+                            </div>
+                            <!-- 社交图标 -->
+                            <div class="social-contact" id="social">
+                                <div class="social-contact-item" id="social-item">
+                                    <!-- 提示：最多设置6个图片不然会导致后面文字显示不完整  -->
+                                    <!-- GitHub按钮 -->
+                                    <a class="github-btn" href="https://github.com/isYangs" id="github" target="_blank">
+                                        <i class="iconfont i-github"></i>
+                                    </a>
+                                    <!-- QQ按钮 -->
+                                    <a class="qq-btn" href="https://wpa.qq.com/msgrd?v=3&uin=750837279&site=qq&menu=yes&jumpflag=1" id="qq" target="_blank">
+                                        <i class="iconfont i-QQ"></i>
+                                    </a>
+                                    <!-- 微信按钮 -->
+                                    <a class="wechat-btn" id="wechat">
+                                        <i class="iconfont i-weixin"></i>
+                                        <div class="wechat-img" id="wechat-img" style="transform: scale(0)">
+                                            <img alt="微信图片"  src="./img/wechat.png"/>
+                                        </div>
+                                    </a>
+                                    <!-- email(邮箱)按钮 -->
+                                    <a class="email-btn" href="mailto:xuewuzhibu@outlook.com" id="email" target="_blank">
+                                        <i class="iconfont i-email-fill"></i>
+                                    </a>
+                                    <!-- telegram(电报)按钮 -->
+                                    <a class="telegram-btn" href="https://t.me/isYangs" id="telegram" target="_blank">
+                                        <i class="iconfont i-telegram"></i>
+                                    </a>
+                                    <!-- 微博按钮 -->
+                                    <!-- <a href="https://weibo.com/u/自己填写" target="_blank" class="weibo-btn" id="weibo">
+                                        <i class="iconfont i-xinlangweibo"></i>
+                                    </a> -->
+                                    <!-- twitter(推特)按钮 -->
+                                    <!-- <a href="https://twitter.com/自己填写" target="_blank" class="twitter-btn" id="twitter">
+                                        <i class="iconfont i-twitter"></i>
+                                    </a> -->
+                                    <!-- facebook(脸书)按钮 -->
+                                    <!-- <a href="https://www.facebook.com/自己填写" target="_blank" class="facebook-btn" id="facebook">
+                                        <i class="iconfont i-facebook-fill"></i>
+                                    </a> -->
+                                </div>
+                                <span id="link-text" style="opacity: 0">这里可以联系我</span>
+                            </div>
+                        </div>
+                        <div class="main-content-right">
+                            <!-- 功能区 -->
+                            <div class="function-card">
+                                <!-- 一言 -->
+                                <div class="left-card">
+                                    <div class="hitokoto">
+                                        <span id="hitokoto-text">不要企图窥探我的生活，你能看到的，都是我希望让你看到的。</span>
+                                        <div class="text-source">
+                                            <span> -「&nbsp;</span>
+                                            <span id="text-source">网络</span>
+                                            <span>&nbsp;」</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期时间 -->
+                                <div class="right-card">
+                                    <div class="time-card">
+                                        <div class="now-day">
+                                            <span id="now-day">2022年8月17日 星期三 </span>
+                                        </div>
+                                        <div class="now-time">
+                                            <span id="now-time">12:00:00</span>
+                                        </div>
+                                        <div>
+                                            <span id="city-text">咸阳&nbsp;</span>
+                                            <span id="weather-text">多云&nbsp;</span>
+                                            <span id="temp-text">35°C&nbsp;</span>
+                                            <span id="wind-text">北风3级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 标题 + 分割线 -->
+                            <div class="link-title">
+                                <i class="fas fa-link"></i>
+                                <span>网站列表</span>
+                            </div>
+                            <div class="link">
+                                <!-- 第一组 -->
+                                <div class="link-row-1" id="link-1"></div>
+                                <!-- 第二组 -->
+                                <div class="link-row-2" id="link-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 底部版权信息 -->
+                <div class="main-footer">
+                    <span>Copyright ©&nbsp;</span>
+                    <span id="present"></span>
+                    <span><a href="" id="power-text">isYangs</a>&nbsp;</span> <span>&</span>&nbsp;
+                    <!-- 作者信息，请勿删除开发不易，还请保留 -->
+                    <span>Made By isYangs&nbsp;</span>
+                    <span>& &nbsp;</span>
+                    <!-- 备案号 -->
+                    <span id="icp-item"></span>
+                </div>
+            </main>
+        </section>
+        <!-- 引入js文件 -->
+        <script src="./js/main.js"></script>
+        <script src="./js/time.js"></script>
+        <script>
+            main();
+        </script>
+    </body>
+</html>

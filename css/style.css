@@ -1,0 +1,330 @@
+@import url('./loading.css');
+@font-face {
+  font-family: 'BlackRyder';
+  src: url('../font/BlackRyder.otf');
+}
+@font-face {
+  font-family: 'UnidreamLED';
+  src: url('../font/UnidreamLED.ttf');
+}
+@font-face {
+  font-family: 'HarmonyOS';
+  src: url('../font/HarmonyOS.ttf');
+}
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.3s;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+:root {
+  color: #fff;
+  font-size: 18px;
+  font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+section {
+  width: 100%;
+  height: 100%;
+}
+.bg-all {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.bg-all #bg-img {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.bg-all div:last-child {
+  width: 100%;
+  height: 100%;
+  background: #474747;
+  transition: opacity 1s;
+  opacity: 0.5;
+}
+main {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.main-content {
+  width: 1320px;
+  display: flex;
+  justify-content: space-around;
+}
+.main-content .main-content-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 auto;
+}
+.main-content .main-content-row .main-content-left {
+  flex: 1;
+}
+.main-content .main-content-row .main-content-right {
+  flex: 1;
+}
+.page-logo {
+  display: flex;
+}
+.logo {
+  width: 120px;
+  height: 120px;
+}
+.logo img {
+  height: 100%;
+  border-radius: 50%;
+  transition: 1.5s;
+}
+.logo img:hover {
+  transform: rotate(360deg);
+  cursor: pointer;
+}
+.title {
+  width: 100%;
+  margin-left: 0.75rem;
+}
+.title span {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 120px;
+}
+.title span:first-child {
+  padding-left: 20px;
+}
+.title span:last-child {
+  font-size: 2rem;
+}
+.message-card {
+  width: calc(480px - 1rem);
+  height: 100px;
+  color: #fff;
+  padding: 1.2rem;
+  margin-top: 2.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  display: flex;
+  transition: 1.3s;
+}
+.message-card .iconfont {
+  font-size: 0.6rem;
+}
+.message-card .iconfont:last-child {
+  align-self: flex-end;
+}
+.message-card .message-text {
+  width: 415px;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.message-card span {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+.message-card span:first-child {
+  font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.63rem;
+}
+.message-card:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
+}
+.social-contact {
+  width: calc(480px - 1rem);
+  max-width: calc(480px - 1rem);
+  height: 45px;
+  margin-top: 1.25rem;
+  padding: 0 1rem;
+  display: flex;
+  border-radius: 0.5rem;
+}
+.social-contact .social-contact-item {
+  display: flex;
+}
+.social-contact .social-contact-item a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem !important;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.social-contact .social-contact-item a:not(#wechat):hover {
+  transform: scale(1.5) rotate(360deg);
+  transition: 1.5s;
+}
+.social-contact .social-contact-item a .iconfont {
+  font-size: 24px;
+}
+.social-contact span {
+  width: 162px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 45px;
+  visibility: visible;
+  transition: all 0.8s;
+  text-align: right;
+}
+.social-contact:hover {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  transition: 1.5s;
+}
+.wechat-btn {
+  position: relative;
+}
+.wechat-img {
+  width: 84px;
+  height: 84px;
+  position: absolute;
+  padding: 10px;
+  transition: 1.1s;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  top: 40px;
+  margin-top: 10px;
+}
+.wechat-img img {
+  width: 100%;
+  height: 100%;
+}
+.function-card {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+.hitokoto,
+.time-card {
+  width: 280px;
+  height: 165px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 0 1.25rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: 1.3s;
+  cursor: pointer;
+}
+.hitokoto:hover,
+.time-card:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
+}
+.hitokoto {
+  justify-content: center;
+  font-size: 1rem;
+}
+.text-source {
+  margin-top: 0.625rem;
+  align-self: flex-end;
+}
+.time-card {
+  justify-content: center;
+  align-items: center;
+}
+.now-time {
+  font-family: UnidreamLED, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+}
+.link-title {
+  margin: 1.5rem 0.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+}
+.link {
+  width: 100%;
+  height: 100%;
+  max-width: 660px;
+  max-height: 230px;
+}
+.link-row-1,
+.link-row-2 {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.link-row-2 {
+  margin-top: 30px;
+}
+.link-url {
+  width: 200px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1.3s;
+}
+.link-url i {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-right: 12px;
+}
+.link-url:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
+}
+.main-footer {
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  transition: 1.3s;
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.main-footer:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
+}

@@ -1,0 +1,104 @@
+{
+    "page_title": "网页标题",
+    "description": "网页简短的介绍",
+    "keywords": "网页关键词",
+    "logo_img": "logo地址",
+    "title_text_1": "域名前缀",
+    "title_text_2": "域名后缀",
+    "dec_text_title": "网站介绍标题",
+    "dec_text_content": "网站介绍内容",
+    "author": "你的昵称",
+    "social_icon": {
+        "github": {
+            "title": "github",
+            "status": true,
+            "link": "Github用户名"
+        },
+        "qq": {
+            "title": "qq",
+            "status": true,
+            "link": "QQ号"
+        },
+        "wechat": {
+            "title": "wechat",
+            "status": true,
+            "link": "微信二维码地址"
+        },
+        "email": {
+            "title": "email",
+            "status": true,
+            "link": "邮箱地址"
+        },
+        "telegram": {
+            "title": "telegram",
+            "status": true,
+            "link": "telegram用户名"
+        },
+        "weibo": {
+            "title": "weibo",
+            "status": false,
+            "link": "微博id"
+        },
+        "twitter": {
+            "title": "twitter",
+            "status": false,
+            "link": "twitter用户名"
+        },
+        "facebook": {
+            "title": "facebook",
+            "status": false,
+            "link": "facebook用户名"
+        }
+    },
+    "link_1": {
+        "1": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        },
+        "2": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        },
+        "3": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        }
+    },
+    "link_2": {
+        "1": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        },
+        "2": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        },
+        "3": {
+            "icon": "图标名称，例：fab fa-blogger",
+            "text": "链接文字",
+            "link": "链接地址"
+        }
+    },
+    "wallpaper": {
+        "state": "false",
+        "img_api": "壁纸api地址"
+    },
+    "copyright_text": "版权信息中的名字",
+    "icp": {
+        "ICP": {
+            "title": "ICP",
+            "status": false,
+            "text": "ICP备案号"
+        },
+        "MengICP": {
+            "title": "MengICP",
+            "status": true,
+            "text": "萌备备案号"
+        }
+    }
+}
