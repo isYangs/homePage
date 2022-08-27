@@ -8,8 +8,24 @@
 */
 
 function main() {
+  // 页面加载完成后执行
+  window.onload = function () {
+    // 延迟2秒后将加载动画移除
+    setTimeout(() => {
+      document.querySelector(".loading").style.display = "none";
+    }, 2000);
+  };
+
+  getSet(); // 调用自定义设置
   initTime(); // 调用初始化时间函数
   getWeather(); // 调用获取天气函数
+  getHitokoto(); // 调用获取一言函数
+  setTimeout(() => {
+    document.querySelector("#loading-text").style.fontSize = ".8rem";
+    document.querySelector("#loading-text").innerHTML =
+      "加载字体和文件需要一定时间";
+  }, 3000);
+
   // 获取天气
   // 请前往 https://lbs.amap.com/ 申请key
   // 请前往 https://dev.qweather.com/ 申请 key
@@ -65,7 +81,7 @@ function main() {
         console.error(err);
       });
   }
-  getHitokoto(); // 调用获取一言函数
+
   // 获取一言
   function getHitokoto() {
     axios
@@ -82,6 +98,10 @@ function main() {
         console.error(err);
       });
   }
+  // 禁止页面选中
+  document.onselectstart = function () {
+    return false;
+  };
 }
 
 // 遍历数据的函数

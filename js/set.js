@@ -9,7 +9,7 @@
 let socialLink = {
   github: {
     title: "github",
-    link: "https://github.com/",
+    link: "",
   },
   qq: {
     title: "qq",
@@ -49,13 +49,11 @@ let linkDateInfo1 = [];
 let linkDateInfo2 = [];
 let icpInfo = [];
 let newIcpInfo = [];
-getSet();
 
 function getSet() {
   axios
     .get("./setting.json")
     .then((res) => {
-      console.log(res.data);
       // 页面头部信息
       document.querySelector("title").innerHTML = res.data.title;
       document
@@ -93,6 +91,7 @@ function getSet() {
       createElement();
       setSocialContact(); // 调用设置社交联系函数
       document.querySelector("#power-text").innerHTML = res.data.copyright_text;
+      document.querySelector("#social-item");
     })
     .catch((err) => {
       console.error(err);
@@ -101,30 +100,38 @@ function getSet() {
 
 // 创建元素渲染函数
 function createElement() {
-  document.querySelector("#social-item");
-  // for (i = 0; i < socialData.length; i++) {
-  //     const socialItem = document.createElement('a');
-  //     if (socialData[i].title === 'qq') {
-  //         socialItem.setAttribute('href', socialLinkData[i].link + socialData[i].link + socialLinkData[i].link_1);
-  //     } else if (socialData[i].title !== 'wechat') {
-  //         socialItem.setAttribute('href', socialLinkData[i].link + socialData[i].link);
-  //         socialItem.setAttribute('target', '_blank');
-  //     }
-  //     socialItem.className = `${socialLinkData[i].title}-btn`;
-  //     socialItem.id = socialLinkData[i].title;
-  //     if (socialData[i].title === 'email') {
-  //         socialItem.innerHTML = `<i class="fas fa-envelope"></i>`;
-  //     } else if (socialData[i].title !== 'wechat') {
-  //         socialItem.innerHTML = `<i class="fab fa-${socialLinkData[i].title}"></i>`;
-  //     } else {
-  //         socialItem.innerHTML = `<i class="fab fa-weixin"></i>
-  //                 <div class="wechat-img" id="wechat-img" style="transform: scale(0)">
-  //                     <img src="${socialLinkData[i].link}" />
-  //                 </div>`;
-  //     }
-  //     social_item.appendChild(socialItem);
-  // }
+  const social_item = document.querySelector("#social-item");
+  social_item.innerHTML = "";
+  for (let i = 0; i < socialData.length; i++) {
+    const socialItem = document.createElement("a");
+    if (socialData[i].title === "qq") {
+      socialItem.setAttribute(
+        "href",
+        socialLinkData[i].link + socialData[i].link + socialLinkData[i].link_1
+      );
+    } else if (socialData[i].title !== "wechat") {
+      socialItem.setAttribute(
+        "href",
+        socialLinkData[i].link + socialData[i].link
+      );
+      socialItem.setAttribute("target", "_blank");
+    }
+    socialItem.className = `${socialLinkData[i].title}-btn`;
+    socialItem.id = socialLinkData[i].title;
+    if (socialData[i].title === "email") {
+      socialItem.innerHTML = `<i class="fas fa-envelope"></i>`;
+    } else if (socialData[i].title !== "wechat") {
+      socialItem.innerHTML = `<i class="fab fa-${socialLinkData[i].title}"></i>`;
+    } else {
+      socialItem.innerHTML = `<i class="fab fa-weixin"></i>
+                  <div class="wechat-img" id="wechat-img" style="transform: scale(0)">
+                      <img src="${socialLinkData[i].link}" />
+                  </div>`;
+    }
+    social_item.appendChild(socialItem);
+  }
   const link_1 = document.querySelector("#link-1");
+  link_1.innerHTML = "";
   for (let i = 0; i < linkDateInfo1.length; i++) {
     const webItem = document.createElement("a");
     webItem.setAttribute("href", linkDateInfo1[i].link);
@@ -135,6 +142,7 @@ function createElement() {
     link_1.appendChild(webItem);
   }
   const link_2 = document.querySelector("#link-2");
+  link_2.innerHTML = "";
   for (let i = 0; i < linkDateInfo2.length; i++) {
     const webItem = document.createElement("a");
     webItem.setAttribute("href", linkDateInfo2[i].link);
