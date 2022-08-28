@@ -1,7 +1,7 @@
 /*
     作者: isYangs
     版本: 1.0.0
-    主页: https://xuewuzhibu.cn
+    博客: https://xuewuzhibu.cn
     Github: https://github.com/isyangs
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
@@ -25,7 +25,10 @@ function main() {
     document.querySelector("#loading-text").innerHTML =
       "加载字体和文件需要一定时间";
   }, 3000);
-
+  setTimeout(() => {
+    document.querySelector("#loading-text").style.fontSize = ".8rem";
+    document.querySelector("#loading-text").innerHTML = "可能是当前网速较慢";
+  }, 6000);
   // 获取天气
   // 请前往 https://lbs.amap.com/ 申请key
   // 请前往 https://dev.qweather.com/ 申请 key

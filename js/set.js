@@ -1,7 +1,7 @@
 /*
     作者: isYangs
     版本: 1.0.0
-    主页: https://xuewuzhibu.cn
+    博客: https://xuewuzhibu.cn
     Github: https://github.com/isyangs
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
@@ -9,7 +9,7 @@
 let socialLink = {
   github: {
     title: "github",
-    link: "",
+    link: "https://github.com/",
   },
   qq: {
     title: "qq",
