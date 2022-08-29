@@ -13,109 +13,105 @@ function main() {
     // 延迟2秒后将加载动画移除
     setTimeout(() => {
       clearLoading();
-      console.log("加载完成");
     }, 2000);
+  };
 
-    getSet(); // 调用自定义设置
-    initTime(); // 调用初始化时间函数
-    getWeather(); // 调用获取天气函数
-    getHitokoto(); // 调用获取一言函数
-    console.log(
-      typeof document.querySelector("#loading").getAttribute("data-state")
-    );
-    if (
-      document.querySelector("#loading").getAttribute("data-state") === false
-    ) {
-      setTimeout(() => {
-        document.querySelector("#loading-text").style.fontSize = ".8rem";
-        document.querySelector("#loading-text").innerHTML =
-          "加载字体和文件需要一定时间";
-      }, 3000);
-      setTimeout(() => {
-        document.querySelector("#loading-text").style.fontSize = ".8rem";
-        document.querySelector("#loading-text").innerHTML =
-          "可能是当前网速较慢";
-      }, 10000);
+  getSet(); // 调用自定义设置
+  initTime(); // 调用初始化时间函数
+  getWeather(); // 调用获取天气函数
+  getHitokoto(); // 调用获取一言函数
+
+  setTimeout(() => {
+    document.querySelector("#loading-text").innerHTML =
+      "加载字体和文件需要一定时间";
+  }, 1000);
+
+  const getDataState = document
+    .querySelector("#loading")
+    .getAttribute("data-state");
+  setTimeout(() => {
+    if (Boolean(getDataState)) {
+      document.querySelector("#loading-text").innerHTML =
+        "原因：<br />1、当前网速可能较慢<br />2、远端服务器响应较慢";
     }
+  }, 10000);
 
-    // 获取天气
-    // 请前往 https://lbs.amap.com/ 申请key
-    // 请前往 https://dev.qweather.com/ 申请 key
-    function getWeather() {
-      axios
-        .get("https://restapi.amap.com/v3/ip?", {
-          params: {
-            key: "71e5f908c5606e1d259ff109f9ab6347", // 获取当前地址的key
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          const str = res.data.city;
-          const city = str.replace(/市/, "");
-          const cityText = document.querySelector("#city-text");
-          cityText.innerHTML = `${city}&nbsp;`;
-          axios
-            .get("https://geoapi.qweather.com/v2/city/lookup?", {
-              params: {
-                location: city,
-                key: "c75017cad2364ba7baff76bbb26c1793", // 获取城市信息的key
-              },
-            })
-            .then((res) => {
-              const cityId = res.data.location[0].id;
-              axios
-                .get("https://devapi.qweather.com/v7/weather/now?", {
-                  params: {
-                    key: "c75017cad2364ba7baff76bbb26c1793", // 获取天气的key
-                    location: cityId,
-                  },
-                })
-                .then((res) => {
-                  const weather = res.data.now.text;
-                  const temp = res.data.now.temp;
-                  const windDir = res.data.now.windDir;
-                  const windScale = res.data.now.windScale;
-                  const weatherText = document.querySelector("#weather-text");
-                  const tempText = document.querySelector("#temp-text");
-                  const windText = document.querySelector("#wind-text");
-                  weatherText.innerHTML = `${weather}&nbsp;`;
-                  tempText.innerHTML = `${temp}°C&nbsp;`;
-                  windText.innerHTML = `${windDir}&nbsp;${windScale}级`;
-                })
-                .catch((err) => {
-                  console.error(err);
-                });
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+  // 获取天气
+  // 请前往 https://lbs.amap.com/ 申请key
+  // 请前往 https://dev.qweather.com/ 申请 key
+  function getWeather() {
+    axios
+      .get("https://restapi.amap.com/v3/ip?", {
+        params: {
+          key: "71e5f908c5606e1d259ff109f9ab6347", // 获取当前地址的key
+        },
+      })
+      .then((res) => {
+        const str = res.data.city;
+        const city = str.replace(/市/, "");
+        const cityText = document.querySelector("#city-text");
+        cityText.innerHTML = `${city}&nbsp;`;
+        axios
+          .get("https://geoapi.qweather.com/v2/city/lookup?", {
+            params: {
+              location: city,
+              key: "c75017cad2364ba7baff76bbb26c1793", // 获取城市信息的key
+            },
+          })
+          .then((res) => {
+            const cityId = res.data.location[0].id;
+            axios
+              .get("https://devapi.qweather.com/v7/weather/now?", {
+                params: {
+                  key: "c75017cad2364ba7baff76bbb26c1793", // 获取天气的key
+                  location: cityId,
+                },
+              })
+              .then((res) => {
+                const weather = res.data.now.text;
+                const temp = res.data.now.temp;
+                const windDir = res.data.now.windDir;
+                const windScale = res.data.now.windScale;
+                const weatherText = document.querySelector("#weather-text");
+                const tempText = document.querySelector("#temp-text");
+                const windText = document.querySelector("#wind-text");
+                weatherText.innerHTML = `${weather}&nbsp;`;
+                tempText.innerHTML = `${temp}°C&nbsp;`;
+                windText.innerHTML = `${windDir}&nbsp;${windScale}级`;
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
-    // 获取一言
-    function getHitokoto() {
-      axios
-        .get("https://v1.hitokoto.cn/")
-        .then((res) => {
-          const hitokoto = res.data.hitokoto;
-          const textSource = res.data.from;
-          const hitokotoText = document.querySelector("#hitokoto-text");
-          const textSourceText = document.querySelector("#text-source");
-          hitokotoText.innerHTML = hitokoto;
-          textSourceText.innerHTML = textSource;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+  // 获取一言
+  function getHitokoto() {
+    axios
+      .get("https://v1.hitokoto.cn/")
+      .then((res) => {
+        const hitokoto = res.data.hitokoto;
+        const textSource = res.data.from;
+        const hitokotoText = document.querySelector("#hitokoto-text");
+        const textSourceText = document.querySelector("#text-source");
+        hitokotoText.innerHTML = hitokoto;
+        textSourceText.innerHTML = textSource;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
-    // 禁止页面选中
-    document.onselectstart = function () {
-      return false;
-    };
+  // 禁止页面选中
+  document.onselectstart = function () {
+    return false;
   };
 }
 
@@ -197,9 +193,8 @@ function setSocialContact() {
 function clearLoading() {
   const loading = document.querySelector("#loading");
   loading.className = "loading";
-  loading.setAttribute("data-state", false);
-  document.querySelector(".loading-animation").remove();
+  loading.setAttribute("data-state", "false");
   document.querySelector(".main").id = "main";
   document.querySelector("#bg-img").style.filter = "blur(0px)";
-  loading.style.zIndex = "0";
+  loading.style.zIndex = "-999";
 }

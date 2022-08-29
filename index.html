@@ -19,12 +19,12 @@
     />
     <script src="./js/axios.js"></script>
     <script src="./js/set.js"></script>
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
   </head>
   <body>
     <section class="section">
       <!-- 加载动画 -->
-      <div id="loading">
+      <div data-state="true" id="loading">
         <div class="loading-animation">
           <div class="loading-animation-slide">
             <div></div>
@@ -39,8 +39,7 @@
       </div>
       <!-- 背景图片 -->
       <div class="bg-all">
-        <img alt="背景图片" id="bg-img" src="./img/background5.webp" />
-        <div class="cover"></div>
+        <img alt="背景图片" id="bg-img" src="./img/background.webp" />
       </div>
       <!-- 主体内容 -->
       <main class="main">
@@ -120,16 +119,16 @@
                   </a>
                   <!-- 微博按钮 -->
                   <!-- <a href="https://weibo.com/u/自己填写" target="_blank" class="weibo-btn" id="weibo">
-                                                                                                                <i class="iconfont i-xinlangweibo"></i>
-                                                                                                            </a> -->
+                                                                                                                                                                            <i class="iconfont i-xinlangweibo"></i>
+                                                                                                                                                                        </a> -->
                   <!-- twitter(推特)按钮 -->
                   <!-- <a href="https://twitter.com/自己填写" target="_blank" class="twitter-btn" id="twitter">
-                                                                                                                <i class="iconfont i-twitter"></i>
-                                                                                                            </a> -->
+                                                                                                                                                                            <i class="iconfont i-twitter"></i>
+                                                                                                                                                                        </a> -->
                   <!-- facebook(脸书)按钮 -->
                   <!-- <a href="https://www.facebook.com/自己填写" target="_blank" class="facebook-btn" id="facebook">
-                                                                                                                <i class="iconfont i-facebook-fill"></i>
-                                                                                                            </a> -->
+                                                                                                                                                                            <i class="iconfont i-facebook-fill"></i>
+                                                                                                                                                                        </a> -->
                 </div>
                 <span id="link-text" style="opacity: 0">这里可以联系我</span>
               </div>
@@ -227,7 +226,6 @@
       </main>
     </section>
     <!-- 引入js文件 -->
-    <script src="./js/main.js"></script>
     <script src="./js/time.js"></script>
     <script>
       main();
