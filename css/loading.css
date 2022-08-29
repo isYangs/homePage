@@ -6,24 +6,27 @@
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
 */
-.loading {
+#loading {
   width: 100%;
-  min-height: 900px;
-  height: 100%;
-  background: #57606f;
-  z-index: 999;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background: #2b4865;
+  z-index: 99998;
 }
-.loading .loading-animation {
+#loading .loading-animation {
+  z-index: 99999;
   width: 200px;
   height: 130px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: absolute;
 }
-.loading .loading-animation .loading-animation-slide {
+#loading .loading-animation .loading-animation-slide {
   width: 170px;
   height: 50px;
   display: flex;
@@ -31,41 +34,48 @@
   align-items: center;
   flex: 1;
 }
-.loading .loading-animation .loading-animation-slide div {
+#loading .loading-animation .loading-animation-slide div {
   width: 30px;
   height: 30px;
   transform: translate(0px, 0px);
   border-radius: 50%;
   animation: slide 1s infinite;
 }
-.loading .loading-animation .loading-animation-slide div:nth-child(1) {
+#loading .loading-animation .loading-animation-slide div:nth-child(1) {
   background: #52b69a;
   animation-delay: 0.2s;
 }
-.loading .loading-animation .loading-animation-slide div:nth-child(2) {
+#loading .loading-animation .loading-animation-slide div:nth-child(2) {
   background: #34a0a4;
   animation-delay: 0.6s;
 }
-.loading .loading-animation .loading-animation-slide div:nth-child(3) {
+#loading .loading-animation .loading-animation-slide div:nth-child(3) {
   background: #168aad;
   animation-delay: 1s;
 }
-.loading .loading-animation .loading-animation-slide div:nth-child(4) {
+#loading .loading-animation .loading-animation-slide div:nth-child(4) {
   background: #1a759f;
   animation-delay: 1.4s;
 }
-.loading .loading-animation .loading-animation-slide div:nth-child(5) {
+#loading .loading-animation .loading-animation-slide div:nth-child(5) {
   background: #1e6091;
   animation-delay: 1.8s;
 }
-.loading .loading-animation span {
+#loading .loading-animation span {
   width: 100%;
   text-align: center;
   justify-self: center;
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
-.loading .loading-animation span:last-child {
+#loading .loading-animation span:last-child {
   font-size: 0.9rem;
+}
+.loading {
+  transition: 1s;
+  animation: slide-out-fwd-center 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+.loading .loading-animation {
+  display: none !important;
 }
 @keyframes slide {
   0% {
@@ -89,5 +99,15 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes slide-out-fwd-center {
+  0% {
+    transform: translateZ(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(600px);
+    opacity: 0;
   }
 }

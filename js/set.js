@@ -166,3 +166,45 @@ function createElement() {
   icpItemText.innerHTML = `${newIcpInfo[0].text}`;
   icpItem.appendChild(icpItemText);
 }
+// 遍历数据的函数
+function getTraverseData(social, linkDate1, linkDate2, icpData) {
+  // 将对象转换为数组
+  for (const key in social) {
+    socialInfo.push(social[key]);
+  }
+  // 将对象转换为数组
+  for (const key in socialLink) {
+    newsocialLink.push(socialLink[key]);
+  }
+  // 将对象转换为数组
+  for (const key in linkDate1) {
+    linkDateInfo1.push(linkDate1[key]);
+  }
+  // 将对象转换为数组
+  for (const key in linkDate2) {
+    linkDateInfo2.push(linkDate2[key]);
+  }
+  // 将对象转换为数组
+  for (const key in icpData) {
+    icpInfo.push(icpData[key]);
+  }
+  // 循环遍历数组，将结果返回给新的数组
+  socialInfo.forEach((item) => {
+    // 判断status是否为true
+    if (item.status) {
+      socialData.push(item);
+    }
+  });
+  socialData.forEach((item) => {
+    newsocialLink.forEach((item2) => {
+      if (item.title === item2.title) {
+        socialLinkData.push(item2);
+      }
+    });
+  });
+  icpInfo.forEach((item) => {
+    if (item.status) {
+      newIcpInfo.push(item);
+    }
+  });
+}

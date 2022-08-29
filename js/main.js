@@ -12,142 +12,111 @@ function main() {
   window.onload = function () {
     // 延迟2秒后将加载动画移除
     setTimeout(() => {
-      document.querySelector(".loading").style.display = "none";
+      clearLoading();
+      console.log("加载完成");
     }, 2000);
-  };
 
-  getSet(); // 调用自定义设置
-  initTime(); // 调用初始化时间函数
-  getWeather(); // 调用获取天气函数
-  getHitokoto(); // 调用获取一言函数
-  setTimeout(() => {
-    document.querySelector("#loading-text").style.fontSize = ".8rem";
-    document.querySelector("#loading-text").innerHTML =
-      "加载字体和文件需要一定时间";
-  }, 3000);
-  setTimeout(() => {
-    document.querySelector("#loading-text").style.fontSize = ".8rem";
-    document.querySelector("#loading-text").innerHTML = "可能是当前网速较慢";
-  }, 6000);
-  // 获取天气
-  // 请前往 https://lbs.amap.com/ 申请key
-  // 请前往 https://dev.qweather.com/ 申请 key
-  function getWeather() {
-    axios
-      .get("https://restapi.amap.com/v3/ip?", {
-        params: {
-          key: "71e5f908c5606e1d259ff109f9ab6347", // 获取当前地址的key
-        },
-      })
-      .then((res) => {
-        const str = res.data.city;
-        const city = str.replace(/市/, "");
-        const cityText = document.querySelector("#city-text");
-        cityText.innerHTML = `${city}&nbsp;`;
-        axios
-          .get("https://geoapi.qweather.com/v2/city/lookup?", {
-            params: {
-              location: city,
-              key: "c75017cad2364ba7baff76bbb26c1793", // 获取城市信息的key
-            },
-          })
-          .then((res) => {
-            const cityId = res.data.location[0].id;
-            axios
-              .get("https://devapi.qweather.com/v7/weather/now?", {
-                params: {
-                  key: "c75017cad2364ba7baff76bbb26c1793", // 获取天气的key
-                  location: cityId,
-                },
-              })
-              .then((res) => {
-                const weather = res.data.now.text;
-                const temp = res.data.now.temp;
-                const windDir = res.data.now.windDir;
-                const windScale = res.data.now.windScale;
-                const weatherText = document.querySelector("#weather-text");
-                const tempText = document.querySelector("#temp-text");
-                const windText = document.querySelector("#wind-text");
-                weatherText.innerHTML = `${weather}&nbsp;`;
-                tempText.innerHTML = `${temp}°C&nbsp;`;
-                windText.innerHTML = `${windDir}&nbsp;${windScale}级`;
-              })
-              .catch((err) => {
-                console.error(err);
-              });
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  // 获取一言
-  function getHitokoto() {
-    axios
-      .get("https://v1.hitokoto.cn/")
-      .then((res) => {
-        const hitokoto = res.data.hitokoto;
-        const textSource = res.data.from;
-        const hitokotoText = document.querySelector("#hitokoto-text");
-        const textSourceText = document.querySelector("#text-source");
-        hitokotoText.innerHTML = hitokoto;
-        textSourceText.innerHTML = textSource;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  // 禁止页面选中
-  document.onselectstart = function () {
-    return false;
-  };
-}
-
-// 遍历数据的函数
-function getTraverseData(social, linkDate1, linkDate2, icpData) {
-  // 将对象转换为数组
-  for (const key in social) {
-    socialInfo.push(social[key]);
-  }
-  // 将对象转换为数组
-  for (const key in socialLink) {
-    newsocialLink.push(socialLink[key]);
-  }
-  // 将对象转换为数组
-  for (const key in linkDate1) {
-    linkDateInfo1.push(linkDate1[key]);
-  }
-  // 将对象转换为数组
-  for (const key in linkDate2) {
-    linkDateInfo2.push(linkDate2[key]);
-  }
-  // 将对象转换为数组
-  for (const key in icpData) {
-    icpInfo.push(icpData[key]);
-  }
-  // 循环遍历数组，将结果返回给新的数组
-  socialInfo.forEach((item) => {
-    // 判断status是否为true
-    if (item.status) {
-      socialData.push(item);
+    getSet(); // 调用自定义设置
+    initTime(); // 调用初始化时间函数
+    getWeather(); // 调用获取天气函数
+    getHitokoto(); // 调用获取一言函数
+    console.log(
+      typeof document.querySelector("#loading").getAttribute("data-state")
+    );
+    if (
+      document.querySelector("#loading").getAttribute("data-state") === false
+    ) {
+      setTimeout(() => {
+        document.querySelector("#loading-text").style.fontSize = ".8rem";
+        document.querySelector("#loading-text").innerHTML =
+          "加载字体和文件需要一定时间";
+      }, 3000);
+      setTimeout(() => {
+        document.querySelector("#loading-text").style.fontSize = ".8rem";
+        document.querySelector("#loading-text").innerHTML =
+          "可能是当前网速较慢";
+      }, 10000);
     }
-  });
-  socialData.forEach((item) => {
-    newsocialLink.forEach((item2) => {
-      if (item.title === item2.title) {
-        socialLinkData.push(item2);
-      }
-    });
-  });
-  icpInfo.forEach((item) => {
-    if (item.status) {
-      newIcpInfo.push(item);
+
+    // 获取天气
+    // 请前往 https://lbs.amap.com/ 申请key
+    // 请前往 https://dev.qweather.com/ 申请 key
+    function getWeather() {
+      axios
+        .get("https://restapi.amap.com/v3/ip?", {
+          params: {
+            key: "71e5f908c5606e1d259ff109f9ab6347", // 获取当前地址的key
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          const str = res.data.city;
+          const city = str.replace(/市/, "");
+          const cityText = document.querySelector("#city-text");
+          cityText.innerHTML = `${city}&nbsp;`;
+          axios
+            .get("https://geoapi.qweather.com/v2/city/lookup?", {
+              params: {
+                location: city,
+                key: "c75017cad2364ba7baff76bbb26c1793", // 获取城市信息的key
+              },
+            })
+            .then((res) => {
+              const cityId = res.data.location[0].id;
+              axios
+                .get("https://devapi.qweather.com/v7/weather/now?", {
+                  params: {
+                    key: "c75017cad2364ba7baff76bbb26c1793", // 获取天气的key
+                    location: cityId,
+                  },
+                })
+                .then((res) => {
+                  const weather = res.data.now.text;
+                  const temp = res.data.now.temp;
+                  const windDir = res.data.now.windDir;
+                  const windScale = res.data.now.windScale;
+                  const weatherText = document.querySelector("#weather-text");
+                  const tempText = document.querySelector("#temp-text");
+                  const windText = document.querySelector("#wind-text");
+                  weatherText.innerHTML = `${weather}&nbsp;`;
+                  tempText.innerHTML = `${temp}°C&nbsp;`;
+                  windText.innerHTML = `${windDir}&nbsp;${windScale}级`;
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
-  });
+
+    // 获取一言
+    function getHitokoto() {
+      axios
+        .get("https://v1.hitokoto.cn/")
+        .then((res) => {
+          const hitokoto = res.data.hitokoto;
+          const textSource = res.data.from;
+          const hitokotoText = document.querySelector("#hitokoto-text");
+          const textSourceText = document.querySelector("#text-source");
+          hitokotoText.innerHTML = hitokoto;
+          textSourceText.innerHTML = textSource;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
+    // 禁止页面选中
+    document.onselectstart = function () {
+      return false;
+    };
+  };
 }
 
 // 创建设置socialContact的函数
@@ -222,4 +191,15 @@ function setSocialContact() {
       });
     }
   }
+}
+
+// 清除加载动画
+function clearLoading() {
+  const loading = document.querySelector("#loading");
+  loading.className = "loading";
+  loading.setAttribute("data-state", false);
+  document.querySelector(".loading-animation").remove();
+  document.querySelector(".main").id = "main";
+  document.querySelector("#bg-img").style.filter = "blur(0px)";
+  loading.style.zIndex = "0";
 }
