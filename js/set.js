@@ -66,7 +66,8 @@ function getSet() {
         .querySelector('link[rel="icon"]')
         .setAttribute("href", res.data.logo_img);
       // 页面内容信息
-      //document.querySelector('#loading-title').innerHTML = res.data.author + '&nbsp;个人主页';
+      document.querySelector("#loading-title").innerHTML =
+        res.data.author + "&nbsp;个人主页";
       document
         .querySelector(".logo")
         .firstElementChild.setAttribute("src", res.data.logo_img);
@@ -125,7 +126,7 @@ function createElement() {
     } else {
       socialItem.innerHTML = `<i class="fab fa-weixin"></i>
                   <div class="wechat-img" id="wechat-img" style="transform: scale(0)">
-                      <img src="${socialLinkData[i].link}" />
+                      <img src="${socialLinkData[i].link}"  alt="..."/>
                   </div>`;
     }
     social_item.appendChild(socialItem);
@@ -166,6 +167,7 @@ function createElement() {
   icpItemText.innerHTML = `${newIcpInfo[0].text}`;
   icpItem.appendChild(icpItemText);
 }
+
 // 遍历数据的函数
 function getTraverseData(social, linkDate1, linkDate2, icpData) {
   // 将对象转换为数组
@@ -207,4 +209,23 @@ function getTraverseData(social, linkDate1, linkDate2, icpData) {
       newIcpInfo.push(item);
     }
   });
+}
+
+// 网站进入欢迎弹窗
+function welcomePopup(text) {
+  const welcomePopup = document.querySelector(".popup");
+  const popupBox = document.createElement("div");
+  popupBox.id = "popup-box-default";
+  setTimeout(() => {
+    popupBox.id = "popup-box-entrance";
+  }, 1000);
+  popupBox.className = "popup-box";
+  popupBox.innerHTML = `<span>${text}</span>`;
+  welcomePopup.appendChild(popupBox);
+  setTimeout(() => {
+    popupBox.id = "popup-box-exit";
+  }, 6000);
+  setTimeout(() => {
+    popupBox.remove();
+  }, 6500);
 }

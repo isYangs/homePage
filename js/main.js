@@ -118,17 +118,27 @@ function main() {
   let hitCount = 0;
   leftCard.addEventListener("click", () => {
     hitCount++;
-    // 判断hitCount是否大于等于5，如果是则不刷新
-    if (hitCount >= 5) {
-      console.log("手速过快，请十秒钟之后再试");
+    // 判断hitCount是否大于5，如果是则不刷新
+    if (hitCount > 5) {
+      getPopup("手速过快，过一会再试试吧！");
       setTimeout(() => {
         hitCount = 0;
       }, 10000);
-      return;
+    } else {
+      getHitokoto();
     }
-    getHitokoto();
   });
 }
+
+let welcomeText;
+axios
+  .get("./setting.json")
+  .then((res) => {
+    welcomeText = res.data.author;
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // 创建设置socialContact的函数
 function setSocialContact() {
@@ -211,12 +221,27 @@ function clearLoading() {
   loading.setAttribute("data-state", "false");
   document.querySelector("#bg-img").style.filter = "blur(0px)";
   loading.style.zIndex = "-999";
-  setTimeout(() => {
-    document.querySelector(".popup").id = "popup-entrance";
-  }, 1000);
-  setTimeout(() => {
-    document.querySelector(".popup").id = "popup-exit";
-  }, 8000);
+  welcomePopup(`欢迎访问${welcomeText}的个人主页`);
 }
 
 // 显示弹窗
+function getPopup(text, state = true) {
+  const popup = document.querySelector(".popup");
+  const popupElemNum = popup.children.length;
+  if (popupElemNum < 3) {
+    const popupBox = document.createElement("div");
+    popupBox.id = "popup-box-default";
+    setTimeout(() => {
+      popupBox.id = "popup-box-entrance";
+    }, 100);
+    popupBox.className = "popup-box";
+    popupBox.innerHTML = `<span>${text}</span>`;
+    popup.appendChild(popupBox);
+    setTimeout(() => {
+      popupBox.id = "popup-box-exit";
+    }, 6000);
+    setTimeout(() => {
+      popupBox.remove();
+    }, 6500);
+  }
+}
