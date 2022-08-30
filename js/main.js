@@ -113,6 +113,21 @@ function main() {
   document.onselectstart = function () {
     return false;
   };
+  // 设置一言点击自动刷新
+  const leftCard = document.querySelector(".left-card");
+  let hitCount = 0;
+  leftCard.addEventListener("click", () => {
+    hitCount++;
+    // 判断hitCount是否大于等于5，如果是则不刷新
+    if (hitCount >= 5) {
+      console.log("手速过快，请十秒钟之后再试");
+      setTimeout(() => {
+        hitCount = 0;
+      }, 10000);
+      return;
+    }
+    getHitokoto();
+  });
 }
 
 // 创建设置socialContact的函数
@@ -194,7 +209,14 @@ function clearLoading() {
   const loading = document.querySelector("#loading");
   loading.className = "loading";
   loading.setAttribute("data-state", "false");
-  document.querySelector(".main").id = "main";
   document.querySelector("#bg-img").style.filter = "blur(0px)";
   loading.style.zIndex = "-999";
+  setTimeout(() => {
+    document.querySelector(".popup").id = "popup-entrance";
+  }, 1000);
+  setTimeout(() => {
+    document.querySelector(".popup").id = "popup-exit";
+  }, 8000);
 }
+
+// 显示弹窗

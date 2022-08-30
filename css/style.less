@@ -19,6 +19,8 @@
 @UnidreamLED: "../font/UnidreamLED.ttf";
 @HarmonyOS: "../font/HarmonyOS.ttf";
 @import url("./loading.css");
+@import url("./animation.css");
+
 .font-face(@Font, @fontName) {
   @font-face {
     font-family: @fontName;
@@ -38,8 +40,8 @@
     sans-serif;
 }
 
-.box-bg(@br: 0.5rem) {
-  background: rgba(0, 0, 0, 25%);
+.box-bg(@br: 0.5rem,@r: 0,@g: 0,@b: 0,@o: 25%) {
+  background: rgba(@r, @g, @b, @o);
   backdrop-filter: blur(10px);
   border-radius: @br;
 }
@@ -97,10 +99,44 @@ section {
   }
 }
 
+.popup {
+  width: 270px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 999;
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  font-size: 0.9rem;
+
+  .popup-box {
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    .fontFamily();
+    .box-bg(1.5rem);
+    letter-spacing: 1.8px;
+  }
+}
+
+#popup-entrance {
+  transition: 1.1s;
+  animation: bounce-in-left 1.1s both;
+}
+
+#popup-exit {
+  transition: 0.6s;
+  animation: roll-out-left 0.6s ease-in both;
+}
+
 main {
   width: @pageWidth;
   height: @pageHeight;
-  min-height: 600px;
+  min-height: 900px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
