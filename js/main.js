@@ -113,19 +113,38 @@ function main() {
   document.onselectstart = function () {
     return false;
   };
+
   // 设置一言点击自动刷新
   const leftCard = document.querySelector(".left-card");
-  let hitCount = 0;
+  let leftHitCount = 0;
   leftCard.addEventListener("click", () => {
-    hitCount++;
-    // 判断hitCount是否大于5，如果是则不刷新
-    if (hitCount > 5) {
+    leftHitCount++;
+    // 判断leftHitCount是否大于5，如果是则不刷新
+    if (leftHitCount > 2) {
       getPopup("手速过快，过一会再试试吧！");
       setTimeout(() => {
-        hitCount = 0;
+        leftHitCount = 0;
       }, 10000);
     } else {
+      getPopup("正在刷新一言");
       getHitokoto();
+    }
+  });
+
+  // 设置天气点击刷新
+  const rightCard = document.querySelector(".right-card");
+  let rightHitCount = 0;
+  rightCard.addEventListener("click", () => {
+    rightHitCount++;
+    // 判断rightHitCount是否大于1，如果是则不刷新
+    if (rightHitCount > 1) {
+      getPopup("手速过快，过一会再试试吧！");
+      setTimeout(() => {
+        rightHitCount = 0;
+      }, 10000);
+    } else {
+      getPopup("正在刷新当前天气");
+      getWeather();
     }
   });
 }
@@ -225,7 +244,7 @@ function clearLoading() {
 }
 
 // 显示弹窗
-function getPopup(text, state = true) {
+function getPopup(text) {
   const popup = document.querySelector(".popup");
   const popupElemNum = popup.children.length;
   if (popupElemNum < 3) {

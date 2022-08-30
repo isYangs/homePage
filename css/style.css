@@ -6,6 +6,7 @@
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
 */
+/* 公共样式 */
 @import url("./loading.css");
 @import url("./animation.css");
 @font-face {
@@ -45,6 +46,7 @@ section {
   height: 100%;
   position: relative;
 }
+/* 背景图片 */
 .bg-all {
   position: absolute;
   width: 100%;
@@ -62,6 +64,7 @@ section {
   transition: opacity 1s, transform 0.25s, filter 0.25s;
   backface-visibility: hidden;
 }
+/* 弹窗样式 */
 .popup {
   width: 300px;
   height: 210px;
@@ -82,7 +85,7 @@ section {
   font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   letter-spacing: 1.8px;
 }
 .popup .popup-box:nth-child(-n+2) {
@@ -99,6 +102,7 @@ section {
 #popup-box-default {
   transform: translateX(-1000px);
 }
+/* 页面主样式 */
 main {
   width: 100%;
   height: 100%;
@@ -128,6 +132,7 @@ main {
 .main-content .main-content-row .main-content-right {
   flex: 1;
 }
+/* 页面logo */
 .page-logo {
   display: flex;
 }
@@ -144,6 +149,7 @@ main {
   transform: rotate(360deg);
   cursor: pointer;
 }
+/* 页面网址标题 */
 .title {
   width: 100%;
   margin-left: 0.75rem;
@@ -161,6 +167,7 @@ main {
 .title span:last-child {
   font-size: 2rem;
 }
+/* 介绍卡片 */
 .message-card {
   width: calc(480px - 1rem);
   height: 100px;
@@ -203,6 +210,7 @@ main {
   transform: scale(1.02);
   transition: 1.3s;
 }
+/* 社交按钮 */
 .social-contact {
   width: calc(480px - 1rem);
   max-width: calc(480px - 1rem);
@@ -278,6 +286,7 @@ main {
   justify-content: space-between;
   flex: 1;
 }
+/* 一言和时间卡片 */
 .hitokoto,
 .time-card {
   width: 280px;
@@ -314,6 +323,7 @@ main {
   font-size: 3.5rem;
   letter-spacing: 0.2rem;
 }
+/* 网站列表 */
 .link-title {
   margin: 1.5rem 0.5rem;
   color: #fff;
@@ -354,6 +364,7 @@ main {
   transform: scale(1.02);
   transition: 1.3s;
 }
+/* 页面底部版权信息 */
 .main-footer {
   width: 100%;
   height: 40px;
