@@ -10,11 +10,9 @@
 /* 公共样式 */
 @pageWidth: 100%;
 @pageHeight: 100%;
-@mainWidth: 1320px;
 @mainHeight: calc(100vh - 40px);
 @mainFooterHeight: 40px;
 @leftBottomWidth: calc(480px - 1rem);
-@messageTextWidth: 415px;
 @wechatImgWidth: 84px;
 @wechatImgHeight: 84px;
 @BlackRyder: "../font/BlackRyder.otf";
@@ -22,6 +20,7 @@
 @HarmonyOS: "../font/HarmonyOS.ttf";
 @import url("./loading.css");
 @import url("./animation.css");
+@import url("./media.css");
 
 .font-face(@Font, @fontName) {
   @font-face {
@@ -66,6 +65,7 @@ a {
   color: #fff;
   font-size: 18px;
   .fontFamily();
+  transition: 1.5s;
 }
 
 html,
@@ -121,11 +121,11 @@ section {
     line-height: 60px;
     cursor: pointer;
     .fontFamily();
-    .box-bg(.5rem);
+    .box-bg(0.5rem);
     letter-spacing: 1.8px;
   }
 
-  .popup-box:nth-child(-n+2) {
+  .popup-box:nth-child(-n + 2) {
     margin-bottom: 15px;
   }
 }
@@ -158,7 +158,7 @@ main {
 }
 
 .main-content {
-  width: @mainWidth;
+  width: 1320px;
   display: flex;
   justify-content: space-around;
 
@@ -166,15 +166,14 @@ main {
     width: @pageWidth;
     display: flex;
     align-items: flex-end;
-    justify-content: center;
-    margin: 0 auto;
+    justify-content: flex-start;
 
     .main-content-left {
-      flex: 1;
+      flex: 1 0 0;
     }
 
     .main-content-right {
-      flex: 1;
+      flex: 1 0 0;
     }
   }
 }
@@ -214,10 +213,6 @@ main {
     "Helvetica Neue", sans-serif;
     line-height: 120px;
 
-    &:first-child {
-      padding-left: 20px;
-    }
-
     &:last-child {
       font-size: 2rem;
     }
@@ -226,36 +221,32 @@ main {
 
 /* 介绍卡片 */
 .message-card {
-  width: @leftBottomWidth;
-  height: 100px;
+  max-width: 450px;
+  margin-top: 40px;
+  padding: 1.5rem 1rem;
   color: #fff;
-  padding: 1.2rem;
-  margin-top: 2.5rem;
   .box-bg;
-  display: flex;
-  transition: 1.3s;
 
-  .iconfont {
-    font-size: 0.6rem;
-  }
-
-  .iconfont:last-child {
-    align-self: flex-end;
-  }
-
-  .message-text {
-    width: @messageTextWidth;
-    padding: 0 1rem;
+  .msg {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-  }
+    justify-content: space-between;
 
-  span {
-    width: 100%;
-    .textOverflow();
-    font-size: 0.9rem;
+    .iconfont {
+      font-size: 0.6rem;
+    }
+
+    .iconfont:last-child {
+      align-self: flex-end;
+    }
+
+    .message-text {
+      line-height: 1rem;
+      margin: 0.9rem auto 0.9rem 0.9rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
   }
 
   span:first-child {
@@ -274,11 +265,10 @@ main {
 
 /* 社交按钮 */
 .social-contact {
-  width: @leftBottomWidth;
-  max-width: @leftBottomWidth;
+  margin: 20px 20px 0 0;
+  max-width: 450px;
   height: 45px;
-  margin-top: 1.25rem;
-  padding: 0 1rem;
+  padding: 0 16px;
   display: flex;
   border-radius: 0.5rem;
 

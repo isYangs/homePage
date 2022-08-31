@@ -6,3 +6,29 @@
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
 */
+/* 自适应样式 */
+@media (max-width: 1400px) {
+  main .main-content {
+    width: 1320px;
+  }
+}
+@media (min-width: 1200px) {
+  main .main-content {
+    max-width: 1000px;
+  }
+  /* 页面左边区域 */
+  .page-logo,
+  .message-card,
+  .social-contact {
+    margin-left: 60px;
+  }
+  /* 介绍卡片和社交按钮的最大宽度 */
+  .message-card,
+  .social-contact {
+    max-width: calc(460px - 2rem);
+  }
+  /* 页面网址标题 */
+  .title span {
+    font-size: 4rem;
+  }
+}
