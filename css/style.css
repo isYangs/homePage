@@ -34,7 +34,6 @@ a {
   color: #fff;
   font-size: 18px;
   font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  transition: 1.5s;
 }
 html,
 body {
@@ -117,9 +116,12 @@ main {
   left: 0;
 }
 .main-content {
-  width: 1320px;
+  max-width: 1320px;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  transition: 1s;
+  margin: 0 10px;
 }
 .main-content .main-content-row {
   width: 100%;
@@ -167,9 +169,9 @@ main {
 }
 /* 介绍卡片 */
 .message-card {
-  max-width: 450px;
+  max-width: 470px;
   margin-top: 40px;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   color: #fff;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
@@ -177,7 +179,7 @@ main {
 }
 .message-card .msg {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .message-card .msg .iconfont {
   font-size: 0.6rem;
@@ -186,8 +188,7 @@ main {
   align-self: flex-end;
 }
 .message-card .msg .message-text {
-  line-height: 1rem;
-  margin: 0.9rem auto 0.9rem 0.9rem;
+  margin: 1rem auto 1rem 1rem;
 }
 .message-card .msg span {
   font-size: 0.9rem;
@@ -195,7 +196,6 @@ main {
 .message-card span:first-child {
   font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.2rem;
-  margin-bottom: 0.63rem;
 }
 .message-card:hover {
   transform: scale(1.02);
@@ -246,6 +246,7 @@ main {
   visibility: visible;
   transition: all 0.8s;
   text-align: right;
+  font-size: 0.8rem;
 }
 .social-contact:hover {
   background: rgba(0, 0, 0, 0.25);
@@ -277,28 +278,52 @@ main {
   flex: 1;
 }
 /* 一言和时间卡片 */
-.hitokoto,
-.time-card {
-  width: 280px;
-  height: 165px;
+.left-card,
+.right-card {
+  width: calc(310px - 40px);
+  max-height: 165px;
+}
+.left-card {
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
   border-radius: 0.5rem;
-  padding: 0 1.25rem;
+  padding: 20px;
   color: #fff;
   display: flex;
   flex-direction: column;
   transition: 1.3s;
   cursor: pointer;
+  justify-content: center;
+  font-size: 1rem;
 }
-.hitokoto:hover,
-.time-card:hover {
+.left-card .hitokoto {
+  display: flex;
+  flex-direction: column;
+}
+.left-card:hover {
   transform: scale(1.02);
   transition: 1.3s;
 }
-.hitokoto {
+.right-card {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: 1.3s;
+  cursor: pointer;
   justify-content: center;
   font-size: 1rem;
+}
+.right-card .time-card {
+  display: flex;
+  flex-direction: column;
+}
+.right-card:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
 }
 .text-source {
   margin-top: 0.625rem;
@@ -317,6 +342,9 @@ main {
 .link-title {
   margin: 1.5rem 0.5rem;
   color: #fff;
+  font-size: 1.1rem;
+}
+.link-title i {
   font-size: 1.1rem;
 }
 .link {

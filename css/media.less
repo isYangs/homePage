@@ -6,34 +6,49 @@
     信息: 开发不易，请勿删除此片段，版权所有
     提示: 本文件请不要随意删除，否则会导致无法运行
 */
-
-
 /* 自适应样式 */
+
 @media (max-width: 1400px) {
   main {
     .main-content {
-      width: 1320px;
+      max-width: 1140px;
     }
+  }
+
+  /* 介绍卡片和社交按钮 */
+  .message-card,
+  .social-contact {
+    max-width: calc(460px - 3rem);
+  }
+
+  /* 一言和时间卡片 */
+  .left-card,
+  .right-card {
+    width: calc(280px - 40px);
+  }
+
+  #wind-text {
+    display: none;
+  }
+
+  /* 网站列表 */
+  .link-url {
+    width: 180px;
   }
 }
 
-@media (min-width: 1200px) {
+/* 小于1200px时 */
+@media (max-width: 1200px) {
   main {
     .main-content {
       max-width: 1000px;
     }
   }
 
-  /* 页面左边区域 */
-  .page-logo,
+  /* 介绍卡片和社交按钮 */
   .message-card,
   .social-contact {
-    margin-left: 60px;
-  }
-
-  /* 介绍卡片和社交按钮的最大宽度 */
-  .message-card, .social-contact {
-    max-width: calc(460px - 2rem);
+    max-width: calc(460px - 4rem);
   }
 
   /* 页面网址标题 */
@@ -42,4 +57,67 @@
       font-size: 4rem;
     }
   }
+
+  /* 一言和时间卡片 */
+  .left-card,
+  .right-card {
+    width: calc(250px - 50px);
+  }
+
+  #wind-text {
+    display: none;
+  }
+
+  /* 网站列表 */
+  .link-url {
+    width: 156px;
+  }
+}
+
+/* 小于1060px时 */
+@media (max-width: 1060px) {
+  main {
+    .main-content {
+      max-width: 900px;
+    }
+  }
+
+  /* 介绍卡片和社交按钮 */
+  .message-card,
+  .social-contact {
+    max-width: calc(460px - 5rem);
+  }
+
+  /* 页面网址标题 */
+  .title {
+    span {
+      font-size: 3.5rem;
+    }
+  }
+
+  /* 一言和时间卡片 */
+  .left-card {
+    display: none;
+  }
+
+  .right-card {
+    width: 100%;
+  }
+
+  /* 网站列表 */
+  .link-url {
+    width: 130px;
+
+    i {
+      margin-right: 0;
+    }
+
+    span {
+      display: none;
+    }
+  }
+}
+
+/* 小于850px时 */
+@media (max-width: 850px) {
 }

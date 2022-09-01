@@ -37,8 +37,8 @@
 
 .fontFamily() {
   font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-  sans-serif;
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 .box-bg(@br: 0.5rem,@r: 0,@g: 0,@b: 0,@o: 25%) {
@@ -65,7 +65,6 @@ a {
   color: #fff;
   font-size: 18px;
   .fontFamily();
-  transition: 1.5s;
 }
 
 html,
@@ -158,9 +157,12 @@ main {
 }
 
 .main-content {
-  width: 1320px;
+  max-width: 1320px;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  transition: 1s;
+  margin: 0 10px;
 
   .main-content-row {
     width: @pageWidth;
@@ -209,8 +211,8 @@ main {
     font-weight: bold;
     color: #fff;
     font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
     line-height: 120px;
 
     &:last-child {
@@ -221,15 +223,15 @@ main {
 
 /* 介绍卡片 */
 .message-card {
-  max-width: 450px;
+  max-width: 470px;
   margin-top: 40px;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   color: #fff;
   .box-bg;
 
   .msg {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     .iconfont {
       font-size: 0.6rem;
@@ -240,21 +242,20 @@ main {
     }
 
     .message-text {
-      line-height: 1rem;
-      margin: 0.9rem auto 0.9rem 0.9rem;
+      margin: 1rem auto 1rem 1rem;
     }
 
     span {
+      //margin-right: auto;
       font-size: 0.9rem;
     }
   }
 
   span:first-child {
     font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
     font-size: 1.2rem;
-    margin-bottom: 0.63rem;
   }
 
   &:hover {
@@ -308,6 +309,7 @@ main {
     visibility: visible;
     transition: all 0.8s;
     text-align: right;
+    font-size: 0.8rem;
   }
 
   &:hover {
@@ -346,17 +348,27 @@ main {
 }
 
 /* 一言和时间卡片 */
-.hitokoto,
-.time-card {
-  width: 280px;
-  height: 165px;
+.left-card,
+.right-card {
+  width: calc(310px - 40px);
+  max-height: 165px;
+}
+
+.left-card {
   .box-bg;
-  padding: 0 1.25rem;
+  padding: 20px;
   color: #fff;
   display: flex;
   flex-direction: column;
   transition: 1.3s;
   cursor: pointer;
+  justify-content: center;
+  font-size: 1rem;
+
+  .hitokoto {
+    display: flex;
+    flex-direction: column;
+  }
 
   &:hover {
     transform: scale(1.02);
@@ -364,9 +376,26 @@ main {
   }
 }
 
-.hitokoto {
+.right-card {
+  .box-bg;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: 1.3s;
+  cursor: pointer;
   justify-content: center;
   font-size: 1rem;
+
+  .time-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    transition: 1.3s;
+  }
 }
 
 .text-source {
@@ -381,8 +410,8 @@ main {
 
 .now-time {
   font-family: UnidreamLED, system-ui, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-  sans-serif;
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   font-size: 3.5rem;
   letter-spacing: 0.2rem;
 }
@@ -392,6 +421,10 @@ main {
   margin: 1.5rem 0.5rem;
   color: #fff;
   font-size: 1.1rem;
+
+  i {
+    font-size: 1.1rem;
+  }
 }
 
 .link {
