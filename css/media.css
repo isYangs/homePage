@@ -89,3 +89,72 @@
   }
 }
 /* 小于850px时 */
+@media (max-width: 850px) {
+  main .main-content {
+    max-width: 850px;
+  }
+  /* 介绍卡片和社交按钮 */
+  .message-card,
+  .social-contact {
+    max-width: calc(460px - 8rem);
+  }
+  /* 页面网址标题 */
+  .title span {
+    font-size: 3rem;
+  }
+  /* 社交按钮 */
+  .social-contact {
+    justify-content: center;
+  }
+  /* 社交按钮文字 */
+  #link-text {
+    display: none;
+  }
+  /* 网站列表 */
+  .link-url {
+    width: 120px;
+  }
+  .link-url i {
+    margin-right: 0;
+  }
+  .link-url span {
+    display: none;
+  }
+}
+/* 小于770px时 */
+@media (max-width: 770px) {
+  /* 隐藏PC端右侧卡片 */
+  .main-content-right {
+    display: none;
+  }
+  .main-content-left {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  /* logo */
+  .page-logo {
+    justify-content: center;
+  }
+  /* 介绍卡片和社交按钮 */
+  .message-card,
+  .social-contact {
+    max-width: 100%;
+  }
+  /* 显示移动端菜单和按钮 */
+  .menu,
+  .menu-btn {
+    display: block;
+  }
+}
+/* 小于550px时 */
+@media (max-width: 550px) {
+  /* 底部版权信息 */
+  .main-footer span:nth-child(n + 4):nth-child(-n + 5) {
+    display: none;
+  }
+}

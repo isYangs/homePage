@@ -42,16 +42,12 @@ body {
   overflow: hidden;
   box-sizing: border-box;
 }
-section {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
 /* 背景图片 */
 .bg-all {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 .bg-all #bg-img {
   transform: scale(1.1);
@@ -104,35 +100,39 @@ section {
   transform: translateX(-1000px);
 }
 /* 页面主样式 */
-main {
+section {
   width: 100%;
   height: 100%;
-  min-height: 900px;
+}
+section main {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
-.main-content {
+section .main-content {
   max-width: 1320px;
   width: 100%;
   display: flex;
   justify-content: space-around;
   transition: 1s;
   margin: 0 10px;
+  flex-wrap: wrap;
+  position: relative;
 }
-.main-content .main-content-row {
+section .main-content .main-content-row {
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
-.main-content .main-content-row .main-content-left {
+section .main-content .main-content-row .main-content-left {
   flex: 1 0 0;
 }
-.main-content .main-content-row .main-content-right {
+section .main-content .main-content-row .main-content-right {
   flex: 1 0 0;
 }
 /* 页面logo */
@@ -154,7 +154,6 @@ main {
 }
 /* 页面网址标题 */
 .title {
-  width: 100%;
   margin-left: 0.75rem;
 }
 .title span {
@@ -382,13 +381,67 @@ main {
   transform: scale(1.02);
   transition: 1.3s;
 }
+/* 移动端菜单 */
+.menu {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.menu .mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu .mobile-menu .mobile-menu-content {
+  width: 80%;
+  height: 100%;
+}
+.menu .mobile-menu .mobile-menu-content .menu-top-card {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  padding: 40px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: 1.3s;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 1rem;
+}
+.menu .mobile-menu .mobile-menu-content .menu-top-card .menu-hitokoto {
+  display: flex;
+  flex-direction: column;
+}
+.menu .mobile-menu .mobile-menu-content .menu-top-card:hover {
+  transform: scale(1.02);
+  transition: 1.3s;
+}
+.menu-btn {
+  display: none;
+}
+.menu-btn .menu-btn-content {
+  width: 80px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-btn .menu-btn-content .iconfont {
+  font-size: 1.5rem;
+}
 /* 页面底部版权信息 */
 .main-footer {
   width: 100%;
   height: 40px;
   background: rgba(0, 0, 0, 0.25);
   display: flex;
-  align-self: flex-end;
   justify-content: center;
   align-items: center;
   transition: 1.3s;
@@ -397,6 +450,9 @@ main {
   border-radius: 0.5rem;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 .main-footer:hover {
   transform: scale(1.02);

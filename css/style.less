@@ -23,28 +23,26 @@
 @import url("./media.css");
 
 .font-face(@Font, @fontName) {
-  @font-face {
-    font-family: @fontName;
-    src: url(@Font);
-  }
+    @font-face {
+        font-family: @fontName;
+        src: url(@Font);
+    }
 }
 
 .textOverflow() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .fontFamily() {
-  font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
+    font-family: HarmonyOS, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .box-bg(@br: 0.5rem,@r: 0,@g: 0,@b: 0,@o: 25%) {
-  background: rgba(@r, @g, @b, @o);
-  backdrop-filter: blur(10px);
-  border-radius: @br;
+    background: rgba(@r, @g, @b, @o);
+    backdrop-filter: blur(10px);
+    border-radius: @br;
 }
 
 .font-face(@BlackRyder, "BlackRyder");
@@ -52,440 +50,496 @@
 .font-face(@HarmonyOS, "HarmonyOS");
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 :root {
-  color: #fff;
-  font-size: 18px;
-  .fontFamily();
+    color: #fff;
+    font-size: 18px;
+    .fontFamily();
 }
 
 html,
 body {
-  width: @pageWidth;
-  height: @pageHeight;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-section {
-  width: @pageWidth;
-  height: @pageHeight;
-  position: relative;
+    width: @pageWidth;
+    height: @pageHeight;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* 背景图片 */
 .bg-all {
-  position: absolute;
-  width: @pageWidth;
-  height: @pageHeight;
+    position: absolute;
+    width: @pageWidth;
+    height: @pageHeight;
+    z-index: -1;
 
-  #bg-img {
-    transform: scale(1.1);
-    filter: blur(10px);
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 1s, transform 0.25s, filter 0.25s;
-    backface-visibility: hidden;
-  }
+    #bg-img {
+        transform: scale(1.1);
+        filter: blur(10px);
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 1s, transform 0.25s, filter 0.25s;
+        backface-visibility: hidden;
+    }
 }
 
 /* 弹窗样式 */
 .popup {
-  width: 300px;
-  height: 210px;
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-  position: fixed;
-  top: 20px;
-  left: 10px;
-  font-size: 0.9rem;
-
-  .popup-box {
     width: 300px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    cursor: pointer;
-    .fontFamily();
-    .box-bg(0.5rem);
-    letter-spacing: 1.8px;
-  }
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    font-size: 0.9rem;
 
-  .popup-box:nth-child(-n + 2) {
-    margin-bottom: 15px;
-  }
+    .popup-box {
+        width: 300px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        cursor: pointer;
+        .fontFamily();
+        .box-bg(0.5rem);
+        letter-spacing: 1.8px;
+    }
+
+    .popup-box:nth-child(-n + 2) {
+        margin-bottom: 15px;
+    }
 }
 
 #popup-box-entrance {
-  transition: 1.1s;
-  animation: bounce-in-left 1.1s both;
+    transition: 1.1s;
+    animation: bounce-in-left 1.1s both;
 }
 
 #popup-box-exit {
-  transition: 0.6s;
-  animation: roll-out-left 0.6s ease-in both;
+    transition: 0.6s;
+    animation: roll-out-left 0.6s ease-in both;
 }
 
 #popup-box-default {
-  transform: translateX(-1000px);
+    transform: translateX(-1000px);
 }
 
 /* 页面主样式 */
-main {
-  width: @pageWidth;
-  height: @pageHeight;
-  min-height: 900px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.main-content {
-  max-width: 1320px;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  transition: 1s;
-  margin: 0 10px;
-
-  .main-content-row {
+section {
     width: @pageWidth;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    height: @pageHeight;
 
-    .main-content-left {
-      flex: 1 0 0;
+    main {
+        width: @pageWidth;
+        height: @pageHeight;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
-    .main-content-right {
-      flex: 1 0 0;
+    .main-content {
+        max-width: 1320px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        transition: 1s;
+        margin: 0 10px;
+        flex-wrap: wrap;
+        position: relative;
+
+        .main-content-row {
+            width: @pageWidth;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+
+            .main-content-left {
+                flex: 1 0 0;
+            }
+
+            .main-content-right {
+                flex: 1 0 0;
+            }
+        }
     }
-  }
 }
 
 /* 页面logo */
 .page-logo {
-  display: flex;
+    display: flex;
 }
 
 .logo {
-  width: 120px;
-  height: 120px;
+    width: 120px;
+    height: 120px;
 
-  img {
-    height: @pageHeight;
-    border-radius: 50%;
-    transition: 1.5s;
+    img {
+        height: @pageHeight;
+        border-radius: 50%;
+        transition: 1.5s;
 
-    &:hover {
-      transform: rotate(360deg);
-      cursor: pointer;
+        &:hover {
+            transform: rotate(360deg);
+            cursor: pointer;
+        }
     }
-  }
 }
 
 /* 页面网址标题 */
 .title {
-  width: @pageWidth;
-  margin-left: 0.75rem;
+    //width: @pageWidth;
+    margin-left: 0.75rem;
 
-  span {
-    font-size: 4.5rem;
-    font-weight: bold;
-    color: #fff;
-    font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
-    line-height: 120px;
+    span {
+        font-size: 4.5rem;
+        font-weight: bold;
+        color: #fff;
+        font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        line-height: 120px;
 
-    &:last-child {
-      font-size: 2rem;
+        &:last-child {
+            font-size: 2rem;
+        }
     }
-  }
 }
 
 /* 介绍卡片 */
 .message-card {
-  max-width: 470px;
-  margin-top: 40px;
-  padding: 1rem 1rem;
-  color: #fff;
-  .box-bg;
+    max-width: 470px;
+    margin-top: 40px;
+    padding: 1rem 1rem;
+    color: #fff;
+    .box-bg;
 
-  .msg {
-    display: flex;
-    justify-content: space-evenly;
+    .msg {
+        display: flex;
+        justify-content: space-evenly;
 
-    .iconfont {
-      font-size: 0.6rem;
+        .iconfont {
+            font-size: 0.6rem;
+        }
+
+        .iconfont:last-child {
+            align-self: flex-end;
+        }
+
+        .message-text {
+            margin: 1rem auto 1rem 1rem;
+        }
+
+        span {
+            //margin-right: auto;
+            font-size: 0.9rem;
+        }
     }
 
-    .iconfont:last-child {
-      align-self: flex-end;
+    span:first-child {
+        font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-size: 1.2rem;
     }
 
-    .message-text {
-      margin: 1rem auto 1rem 1rem;
+    &:hover {
+        transform: scale(1.02);
+        transition: 1.3s;
     }
-
-    span {
-      //margin-right: auto;
-      font-size: 0.9rem;
-    }
-  }
-
-  span:first-child {
-    font-family: BlackRyder, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
-    font-size: 1.2rem;
-  }
-
-  &:hover {
-    transform: scale(1.02);
-    transition: 1.3s;
-  }
 }
 
 /* 社交按钮 */
 .social-contact {
-  margin: 20px 20px 0 0;
-  max-width: 450px;
-  height: 45px;
-  padding: 0 16px;
-  display: flex;
-  border-radius: 0.5rem;
-
-  .social-contact-item {
+    margin: 20px 20px 0 0;
+    max-width: 450px;
+    height: 45px;
+    padding: 0 16px;
     display: flex;
+    border-radius: 0.5rem;
 
-    a {
-      width: 42px;
-      height: 42px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-right: 1rem;
-      transition: 0.3s;
-      cursor: pointer;
-      color: #fff;
-      font-size: 1.2rem !important;
-      text-decoration: none;
-      .box-bg;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    .social-contact-item {
+        display: flex;
 
-      &:not(#wechat):hover {
-        transform: scale(1.5) rotate(360deg);
-        transition: 1.5s;
-      }
+        a {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            transition: 0.3s;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.2rem !important;
+            text-decoration: none;
+            .box-bg;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-      .iconfont {
-        font-size: 24px;
-      }
+            &:not(#wechat):hover {
+                transform: scale(1.5) rotate(360deg);
+                transition: 1.5s;
+            }
+
+            .iconfont {
+                font-size: 24px;
+            }
+        }
     }
-  }
 
-  span {
-    width: 162px;
-    .textOverflow();
-    line-height: 45px;
-    visibility: visible;
-    transition: all 0.8s;
-    text-align: right;
-    font-size: 0.8rem;
-  }
+    span {
+        width: 162px;
+        .textOverflow();
+        line-height: 45px;
+        visibility: visible;
+        transition: all 0.8s;
+        text-align: right;
+        font-size: 0.8rem;
+    }
 
-  &:hover {
-    background: rgba(0, 0, 0, 25%);
-    backdrop-filter: blur(10px);
-    transition: 1.5s;
-  }
+    &:hover {
+        background: rgba(0, 0, 0, 25%);
+        backdrop-filter: blur(10px);
+        transition: 1.5s;
+    }
 }
 
 .wechat-btn {
-  position: relative;
+    position: relative;
 }
 
 .wechat-img {
-  width: @wechatImgWidth;
-  height: @wechatImgHeight;
-  position: absolute;
-  padding: 10px;
-  transition: 1.1s;
-  background: rgba(0, 0, 0, 25%);
-  backdrop-filter: blur(10px);
-  border-radius: 0.5rem;
-  top: 40px;
-  margin-top: 10px;
+    width: @wechatImgWidth;
+    height: @wechatImgHeight;
+    position: absolute;
+    padding: 10px;
+    transition: 1.1s;
+    background: rgba(0, 0, 0, 25%);
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+    top: 40px;
+    margin-top: 10px;
 
-  img {
-    width: 100%;
-    height: 100%;
-  }
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .function-card {
-  display: flex;
-  justify-content: space-between;
-  flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
 }
 
 /* 一言和时间卡片 */
 .left-card,
 .right-card {
-  width: calc(310px - 40px);
-  max-height: 165px;
+    width: calc(310px - 40px);
+    max-height: 165px;
 }
 
 .left-card {
-  .box-bg;
-  padding: 20px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  transition: 1.3s;
-  cursor: pointer;
-  justify-content: center;
-  font-size: 1rem;
-
-  .hitokoto {
+    .box-bg;
+    padding: 20px;
+    color: #fff;
     display: flex;
     flex-direction: column;
-  }
-
-  &:hover {
-    transform: scale(1.02);
     transition: 1.3s;
-  }
+    cursor: pointer;
+    justify-content: center;
+    font-size: 1rem;
+
+    .hitokoto {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        transition: 1.3s;
+    }
 }
 
 .right-card {
-  .box-bg;
-  padding: 20px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  transition: 1.3s;
-  cursor: pointer;
-  justify-content: center;
-  font-size: 1rem;
-
-  .time-card {
+    .box-bg;
+    padding: 20px;
+    color: #fff;
     display: flex;
     flex-direction: column;
-  }
-
-  &:hover {
-    transform: scale(1.02);
     transition: 1.3s;
-  }
+    cursor: pointer;
+    justify-content: center;
+    font-size: 1rem;
+
+    .time-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        transition: 1.3s;
+    }
 }
 
 .text-source {
-  margin-top: 0.625rem;
-  align-self: flex-end;
+    margin-top: 0.625rem;
+    align-self: flex-end;
 }
 
 .time-card {
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .now-time {
-  font-family: UnidreamLED, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  font-size: 3.5rem;
-  letter-spacing: 0.2rem;
+    font-family: UnidreamLED, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 0.2rem;
 }
 
 /* 网站列表 */
 .link-title {
-  margin: 1.5rem 0.5rem;
-  color: #fff;
-  font-size: 1.1rem;
-
-  i {
+    margin: 1.5rem 0.5rem;
+    color: #fff;
     font-size: 1.1rem;
-  }
+
+    i {
+        font-size: 1.1rem;
+    }
 }
 
 .link {
-  width: @pageWidth;
-  height: @pageHeight;
-  max-width: 660px;
-  max-height: 230px;
+    width: @pageWidth;
+    height: @pageHeight;
+    max-width: 660px;
+    max-height: 230px;
 }
 
 .link-row-1,
 .link-row-2 {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
 }
 
 .link-row-2 {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .link-url {
-  width: 200px;
-  height: 100px;
-  background: rgba(0, 0, 0, 25%);
-  backdrop-filter: blur(10px);
-  border-radius: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 1.3s;
-
-  i {
-    font-size: 1.8rem;
-    color: #fff;
-    margin-right: 12px;
-  }
-
-  &:hover {
-    transform: scale(1.02);
+    width: 200px;
+    height: 100px;
+    background: rgba(0, 0, 0, 25%);
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 1.3s;
-  }
+
+    i {
+        font-size: 1.8rem;
+        color: #fff;
+        margin-right: 12px;
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        transition: 1.3s;
+    }
+}
+
+/* 移动端菜单 */
+.menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .mobile-menu-content {
+            width: 80%;
+            height: 100%;
+
+            .menu-top-card {
+                .box-bg;
+                padding: 40px;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                transition: 1.3s;
+                cursor: pointer;
+                justify-content: center;
+                font-size: 1rem;
+
+                .menu-hitokoto {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                &:hover {
+                    transform: scale(1.02);
+                    transition: 1.3s;
+                }
+            }
+        }
+    }
+}
+
+.menu-btn {
+    display: none;
+
+    .menu-btn-content {
+        width: 80px;
+        height: 50px;
+        .box-bg(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .iconfont {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 /* 页面底部版权信息 */
 .main-footer {
-  width: @pageWidth;
-  height: @mainFooterHeight;
-  background: rgba(0, 0, 0, 25%);
-  display: flex;
-  align-self: flex-end;
-  justify-content: center;
-  align-items: center;
-  transition: 1.3s;
-  color: #fff;
-  font-size: 0.8rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-  &:hover {
-    transform: scale(1.02);
+    width: @pageWidth;
+    height: @mainFooterHeight;
+    background: rgba(0, 0, 0, 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 1.3s;
-  }
+    color: #fff;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    &:hover {
+        transform: scale(1.02);
+        transition: 1.3s;
+    }
 }

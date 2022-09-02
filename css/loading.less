@@ -9,128 +9,126 @@
 
 /* 页面加载动画 */
 #loading {
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background: #2b4865;
-  z-index: 99998;
-
-  .loading-animation {
-    z-index: 99999;
-    width: 280px;
-    height: 200px;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    position: absolute;
+    align-items: center;
+    position: relative;
+    background: #2b4865;
+    z-index: 99998;
 
-    .loading-animation-slide {
-      width: 170px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
+    .loading-animation {
+        z-index: 99999;
+        width: 280px;
+        height: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: absolute;
 
-      div {
-        width: 30px;
-        height: 30px;
-        transform: translate(0px, 0px);
-        border-radius: 50%;
-        animation: slide 1s infinite;
-      }
+        .loading-animation-slide {
+            width: 170px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
 
-      div:nth-child(1) {
-        background: #52b69a;
-        animation-delay: 0.2s;
-      }
+            div {
+                width: 30px;
+                height: 30px;
+                transform: translate(0px, 0px);
+                border-radius: 50%;
+                animation: slide 1s infinite;
+            }
 
-      div:nth-child(2) {
-        background: #34a0a4;
-        animation-delay: 0.6s;
-      }
+            div:nth-child(1) {
+                background: #52b69a;
+                animation-delay: 0.2s;
+            }
 
-      div:nth-child(3) {
-        background: #168aad;
-        animation-delay: 1s;
-      }
+            div:nth-child(2) {
+                background: #34a0a4;
+                animation-delay: 0.6s;
+            }
 
-      div:nth-child(4) {
-        background: #1a759f;
-        animation-delay: 1.4s;
-      }
+            div:nth-child(3) {
+                background: #168aad;
+                animation-delay: 1s;
+            }
 
-      div:nth-child(5) {
-        background: #1e6091;
-        animation-delay: 1.8s;
-      }
+            div:nth-child(4) {
+                background: #1a759f;
+                animation-delay: 1.4s;
+            }
+
+            div:nth-child(5) {
+                background: #1e6091;
+                animation-delay: 1.8s;
+            }
+        }
+
+        span {
+            width: 100%;
+            height: 5px;
+            text-align: center;
+            justify-self: center;
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+        }
+
+        span:last-child {
+            font-size: 0.9rem;
+        }
     }
-
-    span {
-      width: 100%;
-      height: 5px;
-      text-align: center;
-      justify-self: center;
-      animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1)
-        both;
-    }
-
-    span:last-child {
-      font-size: 0.9rem;
-    }
-  }
 }
 
 .loading {
-  transition: 1s;
-  animation: slide-out-fwd-center 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    transition: 1s;
+    animation: slide-out-fwd-center 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 
-  .loading-animation {
-    display: none !important;
-  }
+    .loading-animation {
+        display: none !important;
+    }
 }
 
 @keyframes slide {
-  0% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
 
-  50% {
-    opacity: 0.7;
-    transform: scale(1.5);
-  }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.5);
+    }
 
-  100% {
-    transform: scale(1);
-  }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes tracking-in-expand {
-  0% {
-    letter-spacing: -0.5em;
-    opacity: 0;
-  }
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
 
-  40% {
-    opacity: 0.6;
-  }
+    40% {
+        opacity: 0.6;
+    }
 
-  100% {
-    opacity: 1;
-  }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes slide-out-fwd-center {
-  0% {
-    transform: translateZ(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateZ(600px);
-    opacity: 0;
-  }
+    0% {
+        transform: translateZ(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(600px);
+        opacity: 0;
+    }
 }
